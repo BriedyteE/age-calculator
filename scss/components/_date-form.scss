@@ -16,10 +16,15 @@
         letter-spacing: 3px;
       }
       input {
-        font-size: 2rem;
+        font-size: 1.4rem;
         border: 1px solid c.$lightGreyColor;
         width: 120px;
         border-radius: 8px;
+        padding: 8px 16px;
+      }
+      input::placeholder {
+        text-transform: uppercase;
+        color: c.$smokeyGreyColor;
       }
     }
   }

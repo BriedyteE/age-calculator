@@ -119,10 +119,15 @@ html {
   letter-spacing: 3px;
 }
 .date-form .inputs-wrapper .label-input input {
-  font-size: 2rem;
+  font-size: 1.4rem;
   border: 1px solid hsl(0, 0%, 86%);
   width: 120px;
   border-radius: 8px;
+  padding: 8px 16px;
+}
+.date-form .inputs-wrapper .label-input input::placeholder {
+  text-transform: uppercase;
+  color: hsl(0, 1%, 44%);
 }
 .date-form .submit-btn-wrapper {
   width: 100%;
