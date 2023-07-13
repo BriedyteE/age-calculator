@@ -1,0 +1,13 @@
+@use "../globals/colors" as c;
+
+.form-results {
+  font-size: 5rem;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1;
+  color: c.$offBlackColor;
+
+  .result {
+    color: c.$primaryColor;
+  }
+}

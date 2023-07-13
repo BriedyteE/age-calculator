@@ -1,0 +1,49 @@
+@use "../globals/colors" as c;
+
+.date-form {
+  .inputs-wrapper {
+    width: 100%;
+    display: flex;
+    gap: 25px;
+    margin-bottom: 10px;
+    .label-input {
+      display: flex;
+      flex-direction: column;
+      font-size: 12px;
+      label {
+        color: c.$smokeyGreyColor;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+      }
+      input {
+        font-size: 2rem;
+        border: 1px solid c.$lightGreyColor;
+        width: 120px;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  .submit-btn-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    position: relative;
+    z-index: 9;
+    .submit-btn {
+      background-color: c.$primaryColor;
+      padding: 13px 15px;
+      border-radius: 50%;
+    }
+    .submit-btn::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      background: c.$lightGreyColor;
+      height: 2px;
+      width: 100%;
+      z-index: -1;
+    }
+  }
+}

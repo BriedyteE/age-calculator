@@ -1,0 +1,10 @@
+@use "../globals/colors" as c;
+
+.calculator-container {
+  background-color: c.$whiteColor;
+  width: 90%;
+  max-width: 650px;
+  padding: 2.5rem;
+  border-radius: 15px;
+  border-bottom-right-radius: 30%;
+}

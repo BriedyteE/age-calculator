@@ -1,0 +1,12 @@
+@use "colors" as c;
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: c.$lightGreyColor;
+  display: grid;
+  place-items: center;
+}

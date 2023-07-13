@@ -1,5 +1,161 @@
+/***
+    The new CSS reset - version 1.8.5 (last updated 14.6.2023)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+  all: unset;
+  display: revert;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+}
+
+img {
+  max-inline-size: 100%;
+  max-block-size: 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+input,
+textarea {
+  -webkit-user-select: auto;
+}
+
+textarea {
+  white-space: revert;
+}
+
+meter {
+  -webkit-appearance: revert;
+  appearance: revert;
+}
+
+:where(pre) {
+  all: revert;
+}
+
+::placeholder {
+  color: unset;
+}
+
+::marker {
+  content: initial;
+}
+
+:where([hidden]) {
+  display: none;
+}
+
+:where([contenteditable]:not([contenteditable=false])) {
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+  overflow-wrap: break-word;
+  -webkit-line-break: after-white-space;
+  -webkit-user-select: auto;
+}
+
+:where([draggable=true]) {
+  -webkit-user-drag: element;
+}
+
+:where(dialog:modal) {
+  all: revert;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: hsl(0, 0%, 86%);
+  display: grid;
+  place-items: center;
+}
+
 * {
   font-family: "Poppins", sans-serif;
+}
+
+html {
+  font-size: 16px;
+}
+
+.calculator-container {
+  background-color: hsl(0, 0%, 100%);
+  width: 90%;
+  max-width: 650px;
+  padding: 2.5rem;
+  border-radius: 15px;
+  border-bottom-right-radius: 30%;
+}
+
+.date-form .inputs-wrapper {
+  width: 100%;
+  display: flex;
+  gap: 25px;
+  margin-bottom: 10px;
+}
+.date-form .inputs-wrapper .label-input {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+}
+.date-form .inputs-wrapper .label-input label {
+  color: hsl(0, 1%, 44%);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+.date-form .inputs-wrapper .label-input input {
+  font-size: 2rem;
+  border: 1px solid hsl(0, 0%, 86%);
+  width: 120px;
+  border-radius: 8px;
+}
+.date-form .submit-btn-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  position: relative;
+  z-index: 9;
+}
+.date-form .submit-btn-wrapper .submit-btn {
+  background-color: hsl(259, 100%, 65%);
+  padding: 13px 15px;
+  border-radius: 50%;
+}
+.date-form .submit-btn-wrapper .submit-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  background: hsl(0, 0%, 86%);
+  height: 2px;
+  width: 100%;
+  z-index: -1;
+}
+
+.form-results {
+  font-size: 5rem;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1;
+  color: hsl(0, 0%, 8%);
+}
+.form-results .result {
+  color: hsl(259, 100%, 65%);
 }
 
 /*# sourceMappingURL=main.css.map */

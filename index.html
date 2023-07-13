@@ -22,13 +22,37 @@
     <title>Frontend Mentor | Age calculator app</title>
   </head>
   <body>
-    Day DD Month MM Year YYYY -- years -- months -- days
+    <div class="calculator-container">
+      <form class="date-form">
+        <div class="inputs-wrapper">
+          <div class="label-input">
+            <label for="day">day:</label>
+            <input type="number" id="day" name="day" />
+          </div>
 
-    <div class="sliderThumb">
-      Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-        >Frontend Mentor</a
-      >. Coded by <a href="#">Your Name Here</a>.
+          <div class="label-input">
+            <label for="month">month:</label>
+            <input type="number" id="month" name="month" />
+          </div>
+
+          <div class="label-input">
+            <label for="year">year:</label>
+            <input type="number" id="year" name="year" />
+          </div>
+        </div>
+
+        <div class="submit-btn-wrapper">
+          <button type="submit" class="submit-btn">
+            <img src="./assets/images/icon-arrow.svg" alt="Submit" />
+          </button>
+        </div>
+      </form>
+
+      <div class="form-results">
+        <p><span class="result years">- -</span>years</p>
+        <p><span class="result monts">- -</span>months</p>
+        <p><span class="result days">- -</span>days</p>
+      </div>
     </div>
   </body>
 </html>
