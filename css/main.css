@@ -102,32 +102,52 @@ html {
   border-bottom-right-radius: 30%;
 }
 
+.date-form .error-text {
+  color: hsl(0, 100%, 67%);
+  display: none;
+}
+.date-form .error-text.form.visible {
+  display: inline-block;
+}
 .date-form .inputs-wrapper {
   width: 100%;
   display: flex;
   gap: 25px;
   margin-bottom: 10px;
 }
-.date-form .inputs-wrapper .label-input {
+.date-form .inputs-wrapper .input-items {
   display: flex;
   flex-direction: column;
   font-size: 12px;
 }
-.date-form .inputs-wrapper .label-input label {
+.date-form .inputs-wrapper .input-items label {
   color: hsl(0, 1%, 44%);
   text-transform: uppercase;
   letter-spacing: 3px;
 }
-.date-form .inputs-wrapper .label-input input {
+.date-form .inputs-wrapper .input-items input {
   font-size: 1.4rem;
   border: 1px solid hsl(0, 0%, 86%);
   width: 120px;
   border-radius: 8px;
   padding: 8px 16px;
 }
-.date-form .inputs-wrapper .label-input input::placeholder {
+.date-form .inputs-wrapper .input-items input::placeholder {
   text-transform: uppercase;
   color: hsl(0, 1%, 44%);
+}
+.date-form .inputs-wrapper .input-items.error label {
+  color: hsl(0, 100%, 67%);
+}
+.date-form .inputs-wrapper .input-items.error input {
+  border-color: hsl(0, 100%, 67%);
+  color: hsl(0, 100%, 67%);
+}
+.date-form .inputs-wrapper .input-items.error .error-text {
+  display: inline-block;
+}
+.date-form .inputs-wrapper .input-items.error input::placeholder {
+  color: hsl(0, 100%, 67%);
 }
 .date-form .submit-btn-wrapper {
   width: 100%;

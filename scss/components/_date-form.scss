@@ -1,12 +1,19 @@
 @use "../globals/colors" as c;
 
 .date-form {
+  .error-text {
+    color: c.$secondaryColor;
+    display: none;
+  }
+  .error-text.form.visible {
+    display: inline-block;
+  }
   .inputs-wrapper {
     width: 100%;
     display: flex;
     gap: 25px;
     margin-bottom: 10px;
-    .label-input {
+    .input-items {
       display: flex;
       flex-direction: column;
       font-size: 12px;
@@ -25,6 +32,21 @@
       input::placeholder {
         text-transform: uppercase;
         color: c.$smokeyGreyColor;
+      }
+    }
+    .input-items.error {
+      label {
+        color: c.$secondaryColor;
+      }
+      input {
+        border-color: c.$secondaryColor;
+        color: c.$secondaryColor;
+      }
+      .error-text {
+        display: inline-block;
+      }
+      input::placeholder {
+        color: c.$secondaryColor;
       }
     }
   }

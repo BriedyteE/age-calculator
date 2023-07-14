@@ -25,22 +25,23 @@
     <div class="calculator-container">
       <form class="date-form">
         <div class="inputs-wrapper">
-          <div class="label-input">
+          <div class="input-items" data-id="day">
             <label for="day">day:</label>
             <input type="number" id="day" name="day" placeholder="dd" />
+            <p class="error-text">Must be a valid day</p>
           </div>
-
-          <div class="label-input">
+          <div class="input-items" data-id="month">
             <label for="month">month:</label>
             <input type="number" id="month" name="month" placeholder="mm" />
+            <p class="error-text">Must be a valid month</p>
           </div>
-
-          <div class="label-input">
+          <div class="input-items" data-id="year">
             <label for="year">year:</label>
             <input type="number" id="year" name="year" placeholder="yy" />
+            <p class="error-text">Must be in the past</p>
           </div>
         </div>
-
+        <p class="error-text form">Must be correct date</p>
         <div class="submit-btn-wrapper">
           <button type="submit" class="submit-btn">
             <img src="./assets/images/icon-arrow.svg" alt="Submit" />
@@ -49,10 +50,12 @@
       </form>
 
       <div class="form-results">
-        <p><span class="result years">- -</span>years</p>
-        <p><span class="result monts">- -</span>months</p>
-        <p><span class="result days">- -</span>days</p>
+        <p><span class="result" data-id="year">- -</span> years</p>
+        <p><span class="result" data-id="month">- -</span> months</p>
+        <p><span class="result" data-id="day">- -</span> days</p>
       </div>
     </div>
+
+    <script src="./js/main.js"></script>
   </body>
 </html>
