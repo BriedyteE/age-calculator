@@ -44,32 +44,40 @@ const validateDate = (day, month, year) => {
   const validationDate = getDateData(date);
 
   return (
-    validationDate.day === Number(day) &&
-    validationDate.month === Number(month) &&
-    validationDate.year === Number(year)
+    validationDate.day === day &&
+    validationDate.month === month &&
+    validationDate.year === year
   );
 };
 
 const calculateAge = (birthDay, birthMonth, birthYear) => {
   const currDate = new Date();
-  const { day, month, year } = getDateData(currDate);
+  const curr = getDateData(currDate);
 
-  const isBdayPassedThisYear = new Date(
-    currDate.getFullYear(),
-    birthMonth,
-    birthDay
-  );
+  const isBdayPassedThisYear =
+    new Date(curr.year, birthMonth, birthDay) < currDate;
+  const daysCountInBdayMonth = new Date(curr.year, birthMonth + 1, 0).getDate();
+  const totalDaysInPartialMonths = daysCountInBdayMonth - birthDay + curr.day;
 
-  const monthDiff = month - birthMonth;
-  const dayDiff = day - birthDay;
-  const daysInLastMonth = new Date(year, month, 0).getDate();
+  const getMonth = () => {
+    const monthDiff = isBdayPassedThisYear
+      ? 12 - curr.month - birthMonth
+      : curr.month - birthMonth + 12;
 
-  console.log();
+    return totalDaysInPartialMonths >= daysCountInBdayMonth
+      ? monthDiff
+      : monthDiff - 1;
+  };
 
   return {
-    day: dayDiff < 0 ? dayDiff + daysInLastMonth : dayDiff,
-    month: monthDiff < 0 ? monthDiff + 12 : monthDiff,
-    year: isBdayPassedThisYear ? year - birthYear : year - birthYear - 1,
+    year: isBdayPassedThisYear
+      ? curr.year - birthYear
+      : curr.year - birthYear - 1,
+    month: getMonth(),
+    day:
+      totalDaysInPartialMonths >= daysCountInBdayMonth
+        ? totalDaysInPartialMonths - daysCountInBdayMonth
+        : totalDaysInPartialMonths,
   };
 };
 
@@ -83,7 +91,7 @@ form.addEventListener("submit", (e) => {
   }
 
   const { day, month, year } = data.reduce(
-    (acc, [key, value]) => ({ ...acc, [key]: value }),
+    (acc, [key, value]) => ({ ...acc, [key]: Number(value) }),
     {}
   );
   const isDateValid = validateDate(day, month - 1, year);
