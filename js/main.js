@@ -1,15 +1,12 @@
 const form = document.querySelector(".date-form");
 const inputs = form.querySelectorAll("input");
-const invalidDateText = form.querySelector(".error-text.form");
 
-inputs.forEach((input) =>
-  input.addEventListener("focus", () => {
-    invalidDateText.classList.remove("visible");
-    const inputWrappers = form.querySelectorAll(".input-items");
+let itemsWithErrorClass = [];
 
-    inputWrappers.forEach((wrapper) => wrapper.classList.remove("error"));
-  })
-);
+const removeFormErrors = () =>
+  itemsWithErrorClass.forEach((item) => item.classList.remove("error"));
+
+inputs.forEach((input) => input.addEventListener("focus", removeFormErrors));
 
 const validateFields = (values) => {
   const validatioMap = {
@@ -23,7 +20,9 @@ const validateFields = (values) => {
     const isValidField = validatioMap[field](value);
 
     if (!isValidField) {
-      form.querySelector(`[data-id="${field}"]`).className += " error";
+      const fieldWrapper = form.querySelector(`[data-id="${field}"]`);
+      fieldWrapper.className += " error";
+      itemsWithErrorClass.push(fieldWrapper);
       isVaid = false;
     }
   });
@@ -83,6 +82,7 @@ const calculateAge = (birthDay, birthMonth, birthYear) => {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  removeFormErrors();
   const data = [...new FormData(e.target).entries()];
   const isVaid = validateFields(data);
 
@@ -97,7 +97,9 @@ form.addEventListener("submit", (e) => {
   const isDateValid = validateDate(day, month - 1, year);
 
   if (!isDateValid) {
-    invalidDateText.className += " visible";
+    const invalidDateParagraph = form.querySelector(".error-text.all-fields");
+    invalidDateParagraph.className += " error";
+    itemsWithErrorClass.push(invalidDateParagraph);
     return;
   }
 

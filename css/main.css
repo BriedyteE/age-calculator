@@ -103,7 +103,7 @@ body {
   color: hsl(0, 100%, 67%);
   display: none;
 }
-.date-form .error-text.form.visible {
+.date-form .error-text.all-fields.error {
   display: inline-block;
 }
 .date-form .inputs-wrapper {
