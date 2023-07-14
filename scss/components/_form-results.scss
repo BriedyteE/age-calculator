@@ -1,11 +1,16 @@
 @use "../globals/colors" as c;
+@use "../helpers/media-queries" as m;
 
 .form-results {
-  font-size: 5rem;
+  font-size: 80px;
   font-style: italic;
   font-weight: 700;
   line-height: 1;
   color: c.$offBlackColor;
+  @include m.responsive(small) {
+    font-size: 45px;
+    margin: 30px 0 20px;
+  }
 
   .result {
     color: c.$primaryColor;

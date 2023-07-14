@@ -1,7 +1,9 @@
 @use "../globals/colors" as c;
+@use "../helpers/media-queries" as m;
 
 .date-form {
   .error-text {
+    font-style: italic;
     color: c.$secondaryColor;
     display: none;
   }
@@ -13,6 +15,9 @@
     display: flex;
     gap: 25px;
     margin-bottom: 10px;
+    @include m.responsive(small) {
+      margin-bottom: 30px;
+    }
     .input-items {
       display: flex;
       flex-direction: column;
@@ -28,6 +33,9 @@
         width: 120px;
         border-radius: 8px;
         padding: 8px 16px;
+        @include m.responsive(small) {
+          width: 100%;
+        }
       }
       input::placeholder {
         text-transform: uppercase;
@@ -57,6 +65,9 @@
     justify-content: end;
     position: relative;
     z-index: 9;
+    @include m.responsive(small) {
+      justify-content: center;
+    }
     .submit-btn {
       background-color: c.$primaryColor;
       padding: 13px 15px;

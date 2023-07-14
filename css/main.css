@@ -89,10 +89,6 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-html {
-  font-size: 16px;
-}
-
 .calculator-container {
   background-color: hsl(0, 0%, 100%);
   width: 90%;
@@ -103,6 +99,7 @@ html {
 }
 
 .date-form .error-text {
+  font-style: italic;
   color: hsl(0, 100%, 67%);
   display: none;
 }
@@ -114,6 +111,11 @@ html {
   display: flex;
   gap: 25px;
   margin-bottom: 10px;
+}
+@media only screen and (max-width: 600px) {
+  .date-form .inputs-wrapper {
+    margin-bottom: 30px;
+  }
 }
 .date-form .inputs-wrapper .input-items {
   display: flex;
@@ -131,6 +133,11 @@ html {
   width: 120px;
   border-radius: 8px;
   padding: 8px 16px;
+}
+@media only screen and (max-width: 600px) {
+  .date-form .inputs-wrapper .input-items input {
+    width: 100%;
+  }
 }
 .date-form .inputs-wrapper .input-items input::placeholder {
   text-transform: uppercase;
@@ -156,6 +163,11 @@ html {
   position: relative;
   z-index: 9;
 }
+@media only screen and (max-width: 600px) {
+  .date-form .submit-btn-wrapper {
+    justify-content: center;
+  }
+}
 .date-form .submit-btn-wrapper .submit-btn {
   background-color: hsl(259, 100%, 65%);
   padding: 13px 15px;
@@ -173,11 +185,17 @@ html {
 }
 
 .form-results {
-  font-size: 5rem;
+  font-size: 80px;
   font-style: italic;
   font-weight: 700;
   line-height: 1;
   color: hsl(0, 0%, 8%);
+}
+@media only screen and (max-width: 600px) {
+  .form-results {
+    font-size: 45px;
+    margin: 30px 0 20px;
+  }
 }
 .form-results .result {
   color: hsl(259, 100%, 65%);
