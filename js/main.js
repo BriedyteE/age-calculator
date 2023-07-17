@@ -15,7 +15,7 @@ const validateFields = (fields) => {
   const validatioMap = {
     day: (day) => day > 0 && day <= 31,
     month: (month) => month > 0 && month <= 12,
-    year: (year) => year && year <= new Date().getFullYear(),
+    year: (year) => year !== undefined && year <= new Date().getFullYear(),
   };
   let areAllFieldsValid = true;
 
@@ -32,17 +32,28 @@ const validateFields = (fields) => {
 };
 
 const validateDate = (day, month, year) => {
-  const validationDate = new Date(year, month, day);
+  const date = new Date(year, month, day);
+  const paragraphForErrorTxt = document.querySelector(".error-text.all-fields");
 
   if (year < 1000) {
-    validationDate.setFullYear(year);
+    date.setFullYear(year);
   }
 
-  return (
-    validationDate.getDate() === day &&
-    validationDate.getMonth() === month &&
-    validationDate.getFullYear() === year
-  );
+  const isDateInThePast = date < new Date();
+  const isDateValid =
+    date.getDate() === day &&
+    date.getMonth() === month &&
+    date.getFullYear() === year;
+
+  if (!isDateInThePast || !isDateValid) {
+    paragraphForErrorTxt.textContent = !isDateInThePast
+      ? "Must be in the past"
+      : "Must be correct date";
+    paragraphForErrorTxt.className += ` ${errorClass}`;
+    return false;
+  }
+
+  return true;
 };
 
 const calculateAge = (birthDay, birthMonth, birthYear) => {
@@ -79,21 +90,20 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   removeFormErrors();
   const data = [...new FormData(e.target).entries()];
-  const isVaid = validateFields(data);
+  const areFieldVvalid = validateFields(data);
 
-  if (!isVaid) {
+  if (!areFieldVvalid) {
     return;
   }
 
   const { day, month, year } = data.reduce(
-    (acc, [key, value]) => ({ ...acc, [key]: Number(value) }),
+    (acc, [fieldName, value]) => ({ ...acc, [fieldName]: Number(value) }),
     {}
   );
 
   const isDateValid = validateDate(day, month - 1, year);
 
   if (!isDateValid) {
-    form.querySelector(".error-text.all-fields").className += ` ${errorClass}`;
     return;
   }
 
