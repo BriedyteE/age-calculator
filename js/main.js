@@ -15,12 +15,12 @@ const validateFields = (fields) => {
   const validatioMap = {
     day: (day) => day > 0 && day <= 31,
     month: (month) => month > 0 && month <= 12,
-    year: (year) => year !== undefined && year <= new Date().getFullYear(),
+    year: (year) => year && year <= new Date().getFullYear(),
   };
   let areAllFieldsValid = true;
 
   fields.forEach(([field, value]) => {
-    const isFieldValid = validatioMap[field](Number(value));
+    const isFieldValid = validatioMap[field](value);
 
     if (!isFieldValid) {
       form.querySelector(`[data-id="${field}"]`).className += ` ${errorClass}`;
@@ -29,6 +29,12 @@ const validateFields = (fields) => {
   });
 
   return areAllFieldsValid;
+};
+
+const setDefaultResultText = () => {
+  document
+    .querySelectorAll(".result")
+    .forEach((result) => (result.textContent = "- -"));
 };
 
 const validateDate = (day, month, year) => {
@@ -93,6 +99,7 @@ form.addEventListener("submit", (e) => {
   const areFieldVvalid = validateFields(data);
 
   if (!areFieldVvalid) {
+    setDefaultResultText();
     return;
   }
 
@@ -104,6 +111,7 @@ form.addEventListener("submit", (e) => {
   const isDateValid = validateDate(day, month - 1, year);
 
   if (!isDateValid) {
+    setDefaultResultText();
     return;
   }
 
